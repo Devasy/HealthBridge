@@ -1,0 +1,12 @@
+{
+    admin off
+    log default {
+        exclude http.log.error
+    }
+}
+
+{$RELAY_HOST} {
+    reverse_proxy 127.0.0.1:8080 {
+        header_up X-Real-IP {remote_host}
+    }
+}
